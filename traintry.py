@@ -113,16 +113,3 @@ ax[0].plot(losses["obj"])
 ax[1].plot(losses["box"])
 ax[2].plot(losses["pred"])
 plt.show()
-
-
-# %%
-elem = dataset_tr[12]
-plot_box(elem["img"], elem["annotations"], elem["targets"])
-model.modules_list[-1].bs = 1
-pred = model(torch.tensor(elem["img"]).unsqueeze(0).unsqueeze(0).float()).detach()
-# %%
-pp = process_preds(pred, 28, 256, 10)
-# %%
-plot_box(elem["img"], pp[0,10:11,:4])
-
-# %%
